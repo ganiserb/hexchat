@@ -141,6 +141,8 @@ Source: "pixman-1.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: libs
 Source: "ssleay32.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: libs
 Source: "zlib1.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: libs
 
+Source: "WinSparkle.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: libs
+
 Source: "lib\enchant\libenchant_myspell.dll"; DestDir: "{app}\lib\enchant"; Flags: ignoreversion; Components: libs
 
 Source: "lib\gtk-2.0\i686-pc-vs10\engines\*"; DestDir: "{app}\lib\gtk-2.0\i686-pc-vs10\engines"; Flags: ignoreversion; Components: libs
