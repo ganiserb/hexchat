@@ -803,8 +803,6 @@ iso_8859_1_to_utf8 (unsigned char *text, int len, gsize *bytes_written)
 
 	/* worst case scenario: every byte turns into 3 bytes */
 	res = output = g_malloc ((len * 3) + 1);
-	if (!output)
-		return NULL;
 
 	while (len)
 	{
@@ -1695,8 +1693,6 @@ pevent_load (char *filename)
 			continue;
 		*ofs = 0;
 		ofs++;
-		/*if (*ofs == 0)
-			continue;*/
 
 		if (strcmp (buf, "event_name") == 0)
 		{
@@ -1709,13 +1705,7 @@ pevent_load (char *filename)
 			g_free (text);
 			text = g_strdup (ofs);
 			continue;
-		}/* else if (strcmp (buf, "event_sound") == 0)
-		{
-			if (snd)
-				free (snd);
-			snd = strdup (ofs);
-			continue;
-		}*/
+		}
 
 		continue;
 	}

@@ -1009,7 +1009,7 @@ key_load_kbs (void)
 			keyval = gdk_keyval_from_name (buf);
 			if (keyval == 0)
 			{
-				g_free(ibuf);
+				g_free (ibuf);
 				return 2;
 			}
 
@@ -1025,7 +1025,7 @@ key_load_kbs (void)
 
 			if (kb->action == KEY_MAX_ACTIONS + 1)
 			{
-				g_free(ibuf);
+				g_free (ibuf);
 				return 3;
 			}
 
@@ -1042,7 +1042,7 @@ key_load_kbs (void)
 
 			if (buf[0] != 'D')
 			{
-				g_free(ibuf);
+				g_free (ibuf);
 				return 4;
 			}
 
@@ -1094,11 +1094,11 @@ key_load_kbs (void)
 			continue;
 		}
 	}
-	g_free(ibuf);
+	g_free (ibuf);
 	return 0;
 
 corrupt_file:
-	g_free(ibuf);
+	g_free (ibuf);
 	g_free (kb);
 	return 5;
 }

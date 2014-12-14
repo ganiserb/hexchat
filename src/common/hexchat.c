@@ -538,8 +538,7 @@ exec_notify_kill (session * sess)
 		waitpid (re->childpid, NULL, WNOHANG);
 		fe_input_remove (re->iotag);
 		close (re->myfd);
-		if (re->linebuf)
-			free(re->linebuf);
+		g_free(re->linebuf);
 		g_free (re);
 	}
 #endif

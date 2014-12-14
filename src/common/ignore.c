@@ -278,7 +278,7 @@ ignore_load ()
 	struct ignore *ignore;
 	struct stat st;
 	char *cfg, *my_cfg;
-	int fh, i;
+	int fh;
 
 	fh = hexchat_open_file ("ignore.conf", O_RDONLY, 0, 0);
 	if (fh != -1)
@@ -286,11 +286,8 @@ ignore_load ()
 		fstat (fh, &st);
 		if (st.st_size)
 		{
-			cfg = g_malloc (st.st_size + 1);
-			cfg[0] = '\0';
-			i = read (fh, cfg, st.st_size);
-			if (i >= 0)
-				cfg[i] = '\0';
+			cfg = g_malloc0 (st.st_size + 1);
+			read (fh, cfg, st.st_size);
 			my_cfg = cfg;
 			while (my_cfg)
 			{

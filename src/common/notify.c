@@ -613,7 +613,7 @@ notify_adduser (char *name, char *networks)
 
 	notify->name = g_strndup (name, NICKLEN - 1);
 
-	if (networks)
+	if (networks != NULL)
 		notify->networks = despacify_dup (networks);
 	notify->server_list = 0;
 	notify_list = g_slist_prepend (notify_list, notify);

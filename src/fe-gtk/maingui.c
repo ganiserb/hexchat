@@ -3507,15 +3507,17 @@ mg_changui_new (session *sess, restore_gui *res, int tab, int focus)
 	session_gui *gui;
 	struct User *user = NULL;
 
-	if (!res)
+	if (res == NULL)
 	{
 		res = g_new0 (restore_gui, 1);
 	}
 
 	sess->res = res;
 
-	if (!sess->server->front_session)
+	if (sess->server->front_session == NULL)
+	{
 		sess->server->front_session = sess;
+	}
 
 	if (!is_channel (sess->server, sess->channel))
 		user = userlist_find_global (sess->server, sess->channel);

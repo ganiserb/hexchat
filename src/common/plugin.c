@@ -609,13 +609,7 @@ plugin_emit_command (session *sess, char *name, char *word[], char *word_eol[])
 hexchat_event_attrs *
 hexchat_event_attrs_create (hexchat_plugin *ph)
 {
-	hexchat_event_attrs *attrs;
-
-	attrs = g_malloc (sizeof (*attrs));
-
-	attrs->server_time_utc = (time_t) 0;
-
-	return attrs;
+	return g_new0 (hexchat_event_attrs, 1);
 }
 
 void
@@ -1252,7 +1246,6 @@ hexchat_list_get (hexchat_plugin *ph, const char *name)
 	hexchat_list *list;
 
 	list = g_new0 (hexchat_list, 1);
-	list->pos = NULL;
 
 	switch (str_hash (name))
 	{

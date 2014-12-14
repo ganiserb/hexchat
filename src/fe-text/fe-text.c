@@ -507,14 +507,14 @@ fe_args (int argc, char *argv[])
 	{
 #ifdef WIN32
 		/* see the chdir() below */
-		char *sl, *exe = strdup (argv[0]);
+		char *sl, *exe = g_strdup (argv[0]);
 		sl = strrchr (exe, '\\');
 		if (sl)
 		{
 			*sl = 0;
 			printf ("%s\\plugins\n", exe);
 		}
-		free (exe);
+		g_free (exe);
 #else
 		printf ("%s\n", HEXCHATLIBDIR);
 #endif

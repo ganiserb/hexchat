@@ -889,7 +889,6 @@ dcc_connect_finished (GIOChannel *source, GIOCondition condition, struct DCC *dc
 	case TYPE_CHATRECV:	/* normal chat */
 		dcc->iotag = fe_input_add (dcc->sok, FIA_READ|FIA_EX, dcc_read_chat, dcc);
 		dcc->dccchat = g_new0 (struct dcc_chat, 1);
-		dcc->dccchat->pos = 0;
 		EMIT_SIGNAL (XP_TE_DCCCONCHAT, dcc->serv->front_session,
 						 dcc->nick, host, NULL, NULL, 0);
 		break;
@@ -1623,7 +1622,6 @@ dcc_accept (GIOChannel *source, GIOCondition condition, struct DCC *dcc)
 		dcc_open_query (dcc->serv, dcc->nick);
 		dcc->iotag = fe_input_add (dcc->sok, FIA_READ|FIA_EX, dcc_read_chat, dcc);
 		dcc->dccchat = g_new0 (struct dcc_chat, 1);
-		dcc->dccchat->pos = 0;
 		EMIT_SIGNAL (XP_TE_DCCCONCHAT, dcc->serv->front_session,
 						 dcc->nick, host, NULL, NULL, 0);
 		break;

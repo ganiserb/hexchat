@@ -106,7 +106,7 @@ palette_alloc (GtkWidget * widget)
 void
 palette_load (void)
 {
-	int i, j, l, fh;
+	int i, j, fh;
 	char prefname[256];
 	struct stat st;
 	char *cfg;
@@ -116,11 +116,8 @@ palette_load (void)
 	if (fh != -1)
 	{
 		fstat (fh, &st);
-		cfg = g_malloc (st.st_size + 1);
-		cfg[0] = '\0';
-		l = read (fh, cfg, st.st_size);
-		if (l >= 0)
-			cfg[l] = '\0';
+		cfg = g_malloc0 (st.st_size + 1);
+		read (fh, cfg, st.st_size);
 
 		/* mIRC colors 0-31 are here */
 		for (i = 0; i < 32; i++)

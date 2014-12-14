@@ -331,7 +331,7 @@ record_chan_mode (session *sess, char sign, char mode, char *arg)
 				current = g_string_erase(current, argument_offset+1, argument_length-1);
 				current = g_string_insert(current, argument_offset+1, arg);
 
-				free(sess->current_modes);
+				g_free(sess->current_modes);
 				sess->current_modes = g_string_free(current, FALSE);
 			}
 		}
@@ -348,7 +348,7 @@ record_chan_mode (session *sess, char sign, char mode, char *arg)
 				current = g_string_append(current, arg);
 			}
 
-			free(sess->current_modes);
+			g_free(sess->current_modes);
 			sess->current_modes = g_string_free(current, FALSE);
 		}
 	}
@@ -361,7 +361,7 @@ record_chan_mode (session *sess, char sign, char mode, char *arg)
 		/* remove the mode character */
 		current = g_string_erase(current, mode_pos, 1);
 
-		free(sess->current_modes);
+		g_free(sess->current_modes);
 		sess->current_modes = g_string_free(current, FALSE);
 	}
 }
@@ -831,10 +831,6 @@ inbound_005 (server * serv, char *word[], const message_tags_data *tags_data)
 			serv->supports_monitor = TRUE;
 		} else if (strncmp (word[w], "NETWORK=", 8) == 0)
 		{
-/*			if (serv->networkname)
-				free (serv->networkname);
-			serv->networkname = strdup (word[w] + 8);*/
-
 			if (serv->server_session->type == SESS_SERVER)
 			{
 				safe_strcpy (serv->server_session->channel, word[w] + 8, CHANLEN);

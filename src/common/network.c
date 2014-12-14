@@ -75,11 +75,7 @@ net_store_destroy (netstore * ns)
 netstore *
 net_store_new (void)
 {
-	netstore *ns;
-
-	ns = g_new0 (netstore, 1);
-
-	return ns;
+	return g_new0 (netstore, 1);
 }
 
 #ifndef USE_IPV6
@@ -309,12 +305,14 @@ net_store_fill_any (netstore *ns)
 	struct sockaddr_in *sin;
 
 	ai = ns->ip6_hostent;
-	if (!ai) {
+	if (ai == NULL)
+	{
 		ai = g_new0 (struct addrinfo, 1);
 		ns->ip6_hostent = ai;
 	}
 	sin = (struct sockaddr_in *)ai->ai_addr;
-	if (!sin) {
+	if (sin == NULL)
+	{
 		sin = g_new0 (struct sockaddr_in, 1);
 		ai->ai_addr = (struct sockaddr *)sin;
 	}
@@ -333,12 +331,14 @@ net_store_fill_v4 (netstore *ns, guint32 addr, int port)
 	struct sockaddr_in *sin;
 
 	ai = ns->ip6_hostent;
-	if (!ai) {
+	if (ai == NULL)
+	{
 		ai = g_new0 (struct addrinfo, 1);
 		ns->ip6_hostent = ai;
 	}
 	sin = (struct sockaddr_in *)ai->ai_addr;
-	if (!sin) {
+	if (sin == NULL)
+	{
 		sin = g_new0 (struct sockaddr_in, 1);
 		ai->ai_addr = (struct sockaddr *)sin;
 	}

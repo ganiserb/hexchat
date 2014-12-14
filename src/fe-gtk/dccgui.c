@@ -140,7 +140,7 @@ fe_dcc_send_filereq (struct session *sess, char *nick, int maxcps, int passive)
 {
 	char* tbuf = g_strdup_printf (_("Send file to %s"), nick);
 
-	struct my_dcc_send *mdc = g_new(struct my_dcc_send, 1);
+	struct my_dcc_send *mdc = g_new (struct my_dcc_send, 1);
 	mdc->sess = sess;
 	mdc->nick = g_strdup (nick);
 	mdc->maxcps = maxcps;

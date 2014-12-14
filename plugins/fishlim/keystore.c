@@ -190,7 +190,7 @@ bool keystore_store_key(const char *nick, const char *key) {
         
         // Store encrypted in file
         g_key_file_set_string(keyfile, nick, "key", wrapped);
-        free(wrapped);
+        g_free(wrapped);
     } else {
         // Store unencrypted in file
         g_key_file_set_string(keyfile, nick, "key", key);
